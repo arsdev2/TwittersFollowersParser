@@ -25,11 +25,12 @@ public class MainClass {
 
     private static ArrayList<String> cookiesList = new ArrayList<>();
     private static int cookiesIndex = 0;
-    private static final String CHANNEL_NAME = "bitnami";
+    private static String CHANNEL_NAME = "bitnami";
 
     public static void main(String[] args) throws Exception {
         init();
         clearFile();
+		CHANNEL_NAME = readFromFile("channel_name.txt");
         long from = new Date().getTime();
         String response =  get("https://twitter.com/" + CHANNEL_NAME + "/followers");
         ArrayList<String> list = getUsernames(response);
